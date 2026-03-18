@@ -490,11 +490,19 @@
             });
         }
         
-        // 加载数据（将被替换为内嵌数据）
-        function loadData() {
-            // 数据将在编译时内嵌
-            console.log('数据加载成功（内嵌）', visualizationData);
-            initializeApp();
+        // 从JSON文件加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('visualization_data.json');
+                if (!response.ok) throw new Error('HTTP error ' + response.status);
+                visualizationData = await response.json();
+                console.log('数据加载成功', visualizationData);
+                initializeApp();
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                document.getElementById('papersList').innerHTML = 
+                    '<p style="color:red; text-align:center; font-size:1.2em; padding:40px;">❌ 数据加载失败 (请确保visualization_data.json存在并可访问)</p>';
+            }
         }
         
         // 初始化应用
@@ -914,15 +922,9 @@
             window.addEventListener('resize', () => chart.resize());
         }
         
-        // 页面加载后启动（数据内嵌后会自动执行）
+        // 页面加载后启动
         window.addEventListener('DOMContentLoaded', () => {
-            // 检查visualizationData是否已定义
-            if (typeof visualizationData === 'undefined' || !visualizationData) {
-                document.getElementById('papersList').innerHTML = 
-                    '<p style="color:red; text-align:center;">❌ 数据加载失败</p>';
-            } else {
-                loadData();
-            }
+            loadData();
         });
     </script>
 </body>
