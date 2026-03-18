@@ -365,6 +365,12 @@
             }
         }
     </style>
+    <script src="https://registry.npmmirror.com/echarts-wordcloud/2.1.0/files/dist/echarts-wordcloud.min.js"></script>
+    <script>
+        if (typeof echarts === 'undefined' || typeof echarts.wordCloud === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"><\/script>');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -438,6 +444,24 @@
             <div class="chart">
                 <div class="chart-title">📊 论文-作者统计 (2019-2026)</div>
                 <div class="chart-container" id="authorChart">
+                    <div class="chart-loading">
+                        <div class="spinner"></div>
+                        <div>图表加载中...</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chart">
+                <div class="chart-title">🔗 中外合作构成 (纯国内 vs 含国外元素)</div>
+                <div class="chart-container" id="collaborationChart">
+                    <div class="chart-loading">
+                        <div class="spinner"></div>
+                        <div>图表加载中...</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chart">
+                <div class="chart-title">☁️ 标题高频词云</div>
+                <div class="chart-container" id="wordCloudChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>图表加载中...</div>
@@ -618,6 +642,8 @@
             try { createTrendChart(); } catch (e) { console.error('趋势图加载失败:', e); }
             try { createCountryChart(); } catch (e) { console.error('国家图加载失败:', e); }
             try { createAuthorChart(); } catch (e) { console.error('作者图加载失败:', e); }
+            try { createCollaborationChart(); } catch (e) { console.error('合作构成图加载失败:', e); }
+            try { createWordCloudChart(); } catch (e) { console.error('词云图加载失败:', e); }
         }
         
         // 地图图表
@@ -943,6 +969,142 @@
                 loadData();
             }
         });
+    
+        // 合作构成图
+        function createCollaborationChart() {
+            const container = document.getElementById('collaborationChart');
+            if (!container) return;
+            container.innerHTML = '';
+            const chart = echarts.init(container);
+            charts.collaboration = chart;
+            
+            let pureDomestic = 0;
+            let foreignElement = 0;
+            
+            const targetPapers = currentYear === 'all' 
+                ? visualizationData.papers 
+                : visualizationData.papers.filter(p => p.year === parseInt(currentYear));
+                
+            targetPapers.forEach(paper => {
+                if (!paper.authors || paper.authors.length === 0) return;
+                let isPure = true;
+                for (let author of paper.authors) {
+                    if (author.nationality !== 'China') {
+                        isPure = false;
+                        break;
+                    }
+                }
+                if (isPure) {
+                    pureDomestic++;
+                } else {
+                    foreignElement++;
+                }
+            });
+            
+            const option = {
+                tooltip: { 
+                    trigger: 'item', 
+                    formatter: params => {
+                        let desc = params.name === '🇨🇳 纯国内 (100% China)' 
+                            ? '<br/><span style="font-size:12px;color:#999;">仅由中国作者参与的论文</span>'
+                            : '<br/><span style="font-size:12px;color:#999;">包含至少一位非中国作者(或未知国籍)的论文</span>';
+                        return `<b>${params.name}</b>: ${params.value} 篇 (${params.percent}%)${desc}`;
+                    }
+                },
+                legend: { top: 'bottom' },
+                color: ['#ee6666', '#5470c6'],
+                series: [
+                    {
+                        name: '中外合作构成',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: { show: true, formatter: '{b}\n{d}%' },
+                        data: [
+                            { value: pureDomestic, name: '🇨🇳 纯国内 (100% China)' },
+                            { value: foreignElement, name: '🌍 含国外元素' }
+                        ]
+                    }
+                ]
+            };
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+
+        // 词云图
+        function createWordCloudChart() {
+            const container = document.getElementById('wordCloudChart');
+            if (!container) return;
+            container.innerHTML = '';
+            const chart = echarts.init(container);
+            charts.wordCloud = chart;
+            
+            const targetPapers = currentYear === 'all' 
+                ? visualizationData.papers 
+                : visualizationData.papers.filter(p => p.year === parseInt(currentYear));
+                
+            // 常见的英文停用词
+            const stopWords = new Set(['and', 'the', 'of', 'in', 'for', 'a', 'with', 'to', 'on', 'based', 'from', 'using', 'an', 'by', 'at', 'is', 'are', 'was', 'were', 'as', 'its', 'their', 'which', 'that', 'this', 'via', 'through', 'can', 'be', 'or', 'we', 'how', 'when', 'what']);
+            const wordCount = {};
+            
+            targetPapers.forEach(p => {
+                if (!p.title) return;
+                // 提取长度大于等于3的字母单词
+                const words = p.title.toLowerCase().replace(/[^a-z]/g, ' ').split(/\s+/).filter(w => w.length >= 3);
+                words.forEach(w => {
+                    if (!stopWords.has(w)) {
+                        wordCount[w] = (wordCount[w] || 0) + 1;
+                    }
+                });
+            });
+            
+            const wordData = Object.keys(wordCount)
+                .map(w => ({ name: w, value: wordCount[w] }))
+                .sort((a, b) => b.value - a.value)
+                .slice(0, 100);
+                
+            const option = {
+                tooltip: { show: true, formatter: '{b}: {c}次' },
+                series: [{
+                    type: 'wordCloud',
+                    shape: 'circle',
+                    keepAspect: false,
+                    left: 'center',
+                    top: 'center',
+                    width: '90%',
+                    height: '90%',
+                    right: null,
+                    bottom: null,
+                    sizeRange: [12, 60],
+                    rotationRange: [-45, 90],
+                    rotationStep: 45,
+                    gridSize: 8,
+                    drawOutOfBound: false,
+                    layoutAnimation: true,
+                    textStyle: {
+                        fontFamily: 'sans-serif',
+                        fontWeight: 'bold',
+                        color: function () {
+                            return 'rgb(' + [
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160)
+                            ].join(',') + ')';
+                        }
+                    },
+                    emphasis: { focus: 'self', textStyle: { textShadowBlur: 10, textShadowColor: '#333' } },
+                    data: wordData
+                }]
+            };
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+
     </script>
 </body>
 </html>
