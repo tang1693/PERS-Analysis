@@ -65,22 +65,37 @@
 
 ## 🚀 快速开始
 
-### 在线查看可视化
+### 在线查看可视化（推荐）⭐
 
-1. **直接打开HTML**（推荐）
+**GitHub Pages**: [https://tang1693.github.io/PERS-Analysis/](https://tang1693.github.io/PERS-Analysis/)
+
+**现在显示v2版本**:
+- ✨ 渐变色设计（紫蓝渐变）
+- ✨ 卡片悬停动画
+- ✨ Loading状态可见
+- ✨ 优化图表样式
+
+### 本地使用
+
+#### 方式1: 在线版（需配合JSON）
    ```bash
    # 克隆仓库
    git clone https://github.com/tang1693/PERS-Analysis.git
    cd PERS-Analysis
    
-   # 用浏览器打开 index.html
-   open index.html  # macOS
-   start index.html # Windows
-   xdg-open index.html # Linux
+   # 需要HTTP服务器（避免跨域问题）
+   python3 -m http.server 8000
+   # 访问 http://localhost:8000/index.html
    ```
 
-2. **在线访问**
-   - GitHub Pages: [https://tang1693.github.io/PERS-Analysis/](https://tang1693.github.io/PERS-Analysis/)
+#### 方式2: 自包含版（推荐本地使用）⭐
+   ```bash
+   # 下载 index-v2-standalone.html (265KB)
+   # 双击打开，无需其他文件
+   open index-v2-standalone.html  # macOS
+   start index-v2-standalone.html # Windows
+   xdg-open index-v2-standalone.html # Linux
+   ```
 
 ### 使用CSV数据
 
@@ -133,11 +148,14 @@ ggplot(yearly_stats, aes(x = Year, y = count, fill = Author_Nationality)) +
 
 ```
 PERS-Analysis/
-├── index.html                              # 🌐 交互式可视化页面
-├── visualization_data.json                  # 📊 可视化数据
+├── index.html                              # 🌐 交互式可视化页面（v2版本，在线用）
+├── index-v2-standalone.html                # 💾 自包含版（v2版本，本地用）
+├── visualization_data.json                  # 📊 可视化数据（供index.html使用）
 ├── README.md                                # 📖 项目说明
 ├── CSV_FILES_GUIDE.md                       # 📋 CSV使用指南
 ├── EXECUTIVE_SUMMARY.md                     # 📄 执行摘要
+├── VERSIONS.md                              # 📦 版本说明
+├── UPDATE_NOTES.md                          # 🔄 更新日志
 │
 ├── 🗂️ CSV数据表 (10个)
 │   ├── PERS_Master_Data_2019_2026.csv      # 主数据表 (1,757条)
@@ -204,19 +222,27 @@ PERS-Analysis/
 
 ## 📈 可视化功能
 
-### 交互式HTML页面特性
+### 交互式HTML页面特性（v2版本）⭐
 
 ✅ **地图可视化** - 全球作者分布地图（ECharts Geo）  
 ✅ **年份筛选** - 点击年份查看该年论文和作者  
 ✅ **趋势分析** - 中国作者占比时间序列  
-✅ **国家排名** - Top 15国家作者数排名  
+✅ **国家排名** - Top 15 + Unknown国家作者数排名  
 ✅ **论文详情** - 完整论文列表，作者国籍标注  
 ✅ **响应式设计** - 支持桌面和移动设备  
+
+**v2版本新特性**:
+- 🎨 **渐变色设计** - 紫蓝渐变配色
+- ✨ **悬停动画** - 卡片上浮+阴影效果
+- 🔄 **Loading状态** - Spinner动画可见
+- 📊 **优化图表** - 深色tooltip，更清晰
+- 🔤 **更大字体** - 更易阅读
+- 🔘 **圆角按钮** - 现代化UI
 
 ### 使用示例
 
 1. **查看全局分布**
-   - 打开 `index.html`
+   - 访问 GitHub Pages 或打开 `index-v2-standalone.html`
    - 地图上查看各国作者分布
    - 圆圈大小代表作者数量
 
