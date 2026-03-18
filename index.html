@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERS作者国籍分析 (2019-2026)</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .stat-card .label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .controls {
+            padding: 30px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .year-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .year-btn {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .year-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .year-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .chart {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .chart-title {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #667eea;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .chart-container {
+            height: 500px;
+            padding: 20px;
+        }
+        
+        .papers-section {
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .paper-card {
+            background: white;
+            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .paper-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateX(5px);
+        }
+        
+        .paper-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .paper-title a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            text-decoration: underline;
+        }
+        
+        .paper-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .paper-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .authors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .author-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .author-tag:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .nationality {
+            margin-left: 5px;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+        
+        .flag {
+            margin-right: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2em;
+            color: #667eea;
+        }
+        
+        .footer {
+            padding: 30px;
+            text-align: center;
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .charts {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 PERS作者国籍分析</h1>
+            <p>Photogrammetric Engineering & Remote Sensing (2019-2026)</p>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="label">总论文数</div>
+                <div class="number" id="totalPapers">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">总作者数</div>
+                <div class="number" id="totalAuthors">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">唯一作者</div>
+                <div class="number" id="uniqueAuthors">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">识别率</div>
+                <div class="number" id="identificationRate">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">中国作者占比</div>
+                <div class="number" id="chinaPercentage">-</div>
+            </div>
+        </div>
+        
+        <!-- Year Selector -->
+        <div class="controls">
+            <div class="year-selector" id="yearSelector">
+                <button class="year-btn active" data-year="all">全部年份</button>
+            </div>
+        </div>
+        
+        <!-- Charts -->
+        <div class="charts">
+            <div class="chart">
+                <div class="chart-title">🗺️ 全球作者分布地图</div>
+                <div class="chart-container" id="mapChart"></div>
+            </div>
+            <div class="chart">
+                <div class="chart-title">📈 年度趋势分析</div>
+                <div class="chart-container" id="trendChart"></div>
+            </div>
+            <div class="chart">
+                <div class="chart-title">🌍 国家分布（Top 15）</div>
+                <div class="chart-container" id="countryChart"></div>
+            </div>
+            <div class="chart">
+                <div class="chart-title">📊 论文-作者统计</div>
+                <div class="chart-container" id="authorChart"></div>
+            </div>
+        </div>
+        
+        <!-- Papers Section -->
+        <div class="papers-section">
+            <div class="section-title" id="papersTitle">📚 论文列表 (全部年份)</div>
+            <div id="papersList" class="loading">正在加载数据...</div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>数据来源: ASPRS期刊 | 分析时间: 2026-03-19</p>
+            <p>识别率: 68.4% | 分析方法: 高级启发式算法 + 手动增强</p>
+            <p><a href="https://github.com" target="_blank">📦 GitHub仓库</a> | 
+               <a href="CSV_FILES_GUIDE.md">📖 数据说明</a></p>
+        </div>
+    </div>
+    
+    <script>
+        let visualizationData = null;
+        let currentYear = 'all';
+        
+        // 国旗emoji映射
+        const flagEmoji = {
+            'China': '🇨🇳',
+            'USA': '🇺🇸',
+            'Japan': '🇯🇵',
+            'Korea': '🇰🇷',
+            'Germany': '🇩🇪',
+            'France': '🇫🇷',
+            'UK': '🇬🇧',
+            'India': '🇮🇳',
+            'Turkey': '🇹🇷',
+            'Canada': '🇨🇦',
+            'Australia': '🇦🇺',
+            'Brazil': '🇧🇷',
+            'Pakistan': '🇵🇰',
+            'Egypt': '🇪🇬',
+            'Saudi Arabia': '🇸🇦',
+            'Netherlands': '🇳🇱',
+            'Spain': '🇪🇸',
+            'Sri Lanka': '🇱🇰',
+            'Kenya': '🇰🇪',
+            'Tanzania': '🇹🇿',
+            'Ethiopia': '🇪🇹',
+            'Arab': '🕌',
+            'Unknown': '❓'
+        };
+        
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('visualization_data.json');
+                visualizationData = await response.json();
+                initializeApp();
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                document.getElementById('papersList').innerHTML = 
+                    '<p style="color:red;">数据加载失败，请确保visualization_data.json文件存在。</p>';
+            }
+        }
+        
+        // 初始化应用
+        function initializeApp() {
+            updateStats();
+            createYearButtons();
+            createCharts();
+            updatePapersList('all');
+        }
+        
+        // 更新统计卡片
+        function updateStats() {
+            const totalPapers = visualizationData.papers.length;
+            const uniqueAuthors = Object.keys(visualizationData.authorNationality).length;
+            const totalAuthors = visualizationData.papers.reduce((sum, paper) => sum + paper.authors.length, 0);
+            const identified = Object.values(visualizationData.authorNationality).filter(n => n !== 'Unknown').length;
+            const chinaCount = Object.values(visualizationData.authorNationality).filter(n => n === 'China').length;
+            
+            document.getElementById('totalPapers').textContent = totalPapers;
+            document.getElementById('totalAuthors').textContent = totalAuthors;
+            document.getElementById('uniqueAuthors').textContent = uniqueAuthors;
+            document.getElementById('identificationRate').textContent = (identified / uniqueAuthors * 100).toFixed(1) + '%';
+            document.getElementById('chinaPercentage').textContent = (chinaCount / identified * 100).toFixed(1) + '%';
+        }
+        
+        // 创建年份按钮
+        function createYearButtons() {
+            const years = Object.keys(visualizationData.yearlyStats).sort().reverse();
+            const selector = document.getElementById('yearSelector');
+            
+            years.forEach(year => {
+                const button = document.createElement('button');
+                button.className = 'year-btn';
+                button.dataset.year = year;
+                button.textContent = year + '年';
+                button.onclick = () => selectYear(year);
+                selector.appendChild(button);
+            });
+        }
+        
+        // 选择年份
+        function selectYear(year) {
+            currentYear = year;
+            document.querySelectorAll('.year-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.year === year);
+            });
+            updatePapersList(year);
+        }
+        
+        // 更新论文列表
+        function updatePapersList(year) {
+            const papers = year === 'all' 
+                ? visualizationData.papers 
+                : visualizationData.papers.filter(p => p.year == year);
+            
+            const title = year === 'all' ? '全部年份' : year + '年';
+            document.getElementById('papersTitle').textContent = `📚 论文列表 (${title}) - 共${papers.length}篇`;
+            
+            const html = papers.map(paper => `
+                <div class="paper-card">
+                    <div class="paper-title">
+                        <a href="${paper.url}" target="_blank">${paper.title}</a>
+                    </div>
+                    <div class="paper-meta">
+                        <span>📅 ${paper.year}年${paper.month ? ' 第' + paper.month + '期' : ''}</span>
+                        <span>👥 ${paper.authors.length}位作者</span>
+                        <span>${paper.access === 'Open Access content' ? '🆓 开放获取' : '🔒 订阅内容'}</span>
+                    </div>
+                    <div class="authors-list">
+                        ${paper.authors.map(author => `
+                            <div class="author-tag" title="${author.nationality}">
+                                <span class="flag">${flagEmoji[author.nationality] || '❓'}</span>
+                                ${author.name}
+                                <span class="nationality">(${author.nationality})</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('papersList').innerHTML = html;
+        }
+        
+        // 创建图表
+        function createCharts() {
+            createMapChart();
+            createTrendChart();
+            createCountryChart();
+            createAuthorChart();
+        }
+        
+        // 地图图表
+        function createMapChart() {
+            const chart = echarts.init(document.getElementById('mapChart'));
+            
+            const mapData = Object.entries(visualizationData.countries).map(([country, data]) => ({
+                name: country,
+                value: [...data.coords, data.count],
+                percentage: data.percentage
+            }));
+            
+            const option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: params => {
+                        return `${flagEmoji[params.name] || ''} ${params.name}<br/>
+                                作者数: ${params.value[2]}<br/>
+                                占比: ${params.data.percentage}%`;
+                    }
+                },
+                geo: {
+                    map: 'world',
+                    roam: true,
+                    itemStyle: {
+                        areaColor: '#f3f3f3',
+                        borderColor: '#999'
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            areaColor: '#e0e0e0'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'scatter',
+                    coordinateSystem: 'geo',
+                    data: mapData,
+                    symbolSize: val => Math.sqrt(val[2]) * 5,
+                    label: {
+                        show: false
+                    },
+                    itemStyle: {
+                        color: '#667eea',
+                        opacity: 0.7
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: '#764ba2',
+                            opacity: 1
+                        },
+                        label: {
+                            show: true,
+                            formatter: '{b}',
+                            position: 'top'
+                        }
+                    }
+                }]
+            };
+            
+            // 注册世界地图（简化版）
+            echarts.registerMap('world', {
+                type: 'FeatureCollection',
+                features: []
+            });
+            
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+        
+        // 趋势图表
+        function createTrendChart() {
+            const chart = echarts.init(document.getElementById('trendChart'));
+            
+            const years = Object.keys(visualizationData.yearlyStats).sort();
+            const chinaData = years.map(year => visualizationData.yearlyStats[year]['China'] || 0);
+            const totalData = years.map(year => {
+                return Object.values(visualizationData.yearlyStats[year]).reduce((a, b) => a + b, 0);
+            });
+            const chinaPercentage = years.map((year, i) => 
+                ((chinaData[i] / totalData[i]) * 100).toFixed(1)
+            );
+            
+            const option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['总作者数', '中国作者数', '中国占比']
+                },
+                xAxis: {
+                    type: 'category',
+                    data: years.map(y => y + '年')
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '作者数'
+                    },
+                    {
+                        type: 'value',
+                        name: '占比(%)',
+                        max: 100
+                    }
+                ],
+                series: [
+                    {
+                        name: '总作者数',
+                        type: 'bar',
+                        data: totalData,
+                        itemStyle: { color: '#91cc75' }
+                    },
+                    {
+                        name: '中国作者数',
+                        type: 'bar',
+                        data: chinaData,
+                        itemStyle: { color: '#667eea' }
+                    },
+                    {
+                        name: '中国占比',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: chinaPercentage,
+                        itemStyle: { color: '#ee6666' },
+                        lineStyle: { width: 3 }
+                    }
+                ]
+            };
+            
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+        
+        // 国家分布图表
+        function createCountryChart() {
+            const chart = echarts.init(document.getElementById('countryChart'));
+            
+            const sortedCountries = Object.entries(visualizationData.countries)
+                .filter(([country]) => country !== 'Unknown')
+                .sort((a, b) => b[1].count - a[1].count)
+                .slice(0, 15);
+            
+            const option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value'
+                },
+                yAxis: {
+                    type: 'category',
+                    data: sortedCountries.map(([country]) => flagEmoji[country] + ' ' + country),
+                    inverse: true
+                },
+                series: [{
+                    type: 'bar',
+                    data: sortedCountries.map(([, data]) => data.count),
+                    itemStyle: {
+                        color: params => {
+                            const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe'];
+                            return colors[params.dataIndex % colors.length];
+                        }
+                    },
+                    label: {
+                        show: true,
+                        position: 'right',
+                        formatter: params => {
+                            const percentage = sortedCountries[params.dataIndex][1].percentage;
+                            return `${params.value} (${percentage}%)`;
+                        }
+                    }
+                }]
+            };
+            
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+        
+        // 作者统计图表
+        function createAuthorChart() {
+            const chart = echarts.init(document.getElementById('authorChart'));
+            
+            const years = Object.keys(visualizationData.yearlyStats).sort();
+            const papersPerYear = years.map(year => 
+                visualizationData.papers.filter(p => p.year == year).length
+            );
+            const authorsPerYear = years.map(year => 
+                Object.values(visualizationData.yearlyStats[year]).reduce((a, b) => a + b, 0)
+            );
+            const avgAuthors = years.map((year, i) => 
+                (authorsPerYear[i] / papersPerYear[i]).toFixed(1)
+            );
+            
+            const option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['论文数', '作者数', '平均作者数']
+                },
+                xAxis: {
+                    type: 'category',
+                    data: years.map(y => y + '年')
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '数量'
+                    },
+                    {
+                        type: 'value',
+                        name: '平均值'
+                    }
+                ],
+                series: [
+                    {
+                        name: '论文数',
+                        type: 'bar',
+                        data: papersPerYear,
+                        itemStyle: { color: '#5470c6' }
+                    },
+                    {
+                        name: '作者数',
+                        type: 'bar',
+                        data: authorsPerYear,
+                        itemStyle: { color: '#91cc75' }
+                    },
+                    {
+                        name: '平均作者数',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: avgAuthors,
+                        itemStyle: { color: '#fac858' },
+                        lineStyle: { width: 3 }
+                    }
+                ]
+            };
+            
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+        
+        // 启动应用
+        loadData();
+    </script>
+</body>
+</html>
