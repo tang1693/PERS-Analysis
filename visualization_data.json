@@ -12162,5 +12162,28 @@
       ],
       "percentage": 0.07
     }
+  },
+  "nationalityCounts": {
+    "China": 866,
+    "Unknown": 449,
+    "France": 3,
+    "Saudi Arabia": 4,
+    "USA": 16,
+    "Germany": 13,
+    "Brazil": 1,
+    "Arab": 14,
+    "Pakistan": 3,
+    "Korea": 9,
+    "Japan": 7,
+    "India": 10,
+    "Turkey": 15,
+    "Netherlands": 4,
+    "Sri Lanka": 1,
+    "Tanzania": 1,
+    "Spain": 2,
+    "Egypt": 2,
+    "Ethiopia": 1,
+    "Canada": 1,
+    "Kenya": 1
   }
 }
