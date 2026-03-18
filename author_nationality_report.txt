@@ -1,0 +1,63 @@
+================================================================================
+PERS 作者国籍分析报告 (2019-2026)
+================================================================================
+
+📊 基本统计:
+  论文总数: 383
+  作者总数: 1757
+  唯一作者: 1423
+  平均每篇: 4.6 人
+
+📅 年份分布:
+  2026:  13 篇
+  2025:  45 篇
+  2024:  51 篇
+  2023:  46 篇
+  2022:  55 篇
+  2021:  67 篇
+  2020:  45 篇
+  2019:  61 篇
+
+🌍 国籍分布（唯一作者）:
+  Unknown             :  848 ( 59.6%)
+  China               :  553 ( 38.9% |  96.2% of known)
+  Korea               :    9 (  0.6% |   1.6% of known)
+  USA                 :    6 (  0.4% |   1.0% of known)
+  India               :    5 (  0.4% |   0.9% of known)
+  France              :    1 (  0.1% |   0.2% of known)
+  Germany             :    1 (  0.1% |   0.2% of known)
+
+📈 国籍分布（按总论文贡献）:
+  Unknown             : 1016 ( 57.8%)
+  China               :  717 ( 40.8%)
+  Korea               :   10 (  0.6%)
+  USA                 :    7 (  0.4%)
+  India               :    5 (  0.3%)
+  France              :    1 (  0.1%)
+  Germany             :    1 (  0.1%)
+
+🏆 高产作者 (Top 20):
+   1. Shao, Zhenfeng                           - 12 篇 [Unknown]
+   2. Huang, Xiao                              -  9 篇 [China]
+   3. Qin, Rongjun                             -  8 篇 [Unknown]
+   4. Cheng, Qimin                             -  8 篇 [Unknown]
+   5. Zhu, Qing                                -  7 篇 [China]
+   6. Ge, Xuming                               -  7 篇 [Unknown]
+   7. Wu, Bo                                   -  6 篇 [China]
+   8. Ahmad, Muhammad Nasar                    -  6 篇 [Unknown]
+   9. Hu, Han                                  -  5 篇 [China]
+  10. Chen, Min                                -  5 篇 [China]
+  11. Zheng, Zezhong                           -  5 篇 [Unknown]
+  12. Wang, Wei                                -  5 篇 [China]
+  13. Liu, Wei                                 -  5 篇 [China]
+  14. Jin, Shuanggen                           -  5 篇 [Unknown]
+  15. Javed, Akib                              -  5 篇 [Unknown]
+  16. Parrish, Christopher E.                  -  5 篇 [Unknown]
+  17. Li, Deren                                -  5 篇 [China]
+  18. Peng, Hao                                -  5 篇 [Unknown]
+  19. Habib, Ayman                             -  4 篇 [Unknown]
+  20. Xu, Bo                                   -  4 篇 [China]
+
+================================================================================
+⚠️  注意：国籍判断基于姓名启发式规则，可能存在误差
+================================================================================

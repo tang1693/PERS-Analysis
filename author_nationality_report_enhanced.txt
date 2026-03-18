@@ -1,0 +1,155 @@
+================================================================================
+PERS 作者国籍分析报告 (高级增强版) - 2019-2026
+================================================================================
+
+📊 基本统计:
+  论文总数: 383
+  作者总数: 1757
+  唯一作者: 1423
+  平均每篇: 4.6 人
+
+📅 年份分布:
+  2026:  13 篇
+  2025:  45 篇
+  2024:  51 篇
+  2023:  46 篇
+  2022:  55 篇
+  2021:  67 篇
+  2020:  45 篇
+  2019:  61 篇
+
+🌍 国籍分布（唯一作者）:
+  已识别: 944 (66.3%)
+  未识别: 479 (33.7%)
+
+  China               :  859 ( 60.4% |  91.0% of known)
+  Unknown             :  479 ( 33.7%)
+  Arab                :   14 (  1.0% |   1.5% of known)
+  Turkey              :   13 (  0.9% |   1.4% of known)
+  Germany             :   11 (  0.8% |   1.2% of known)
+  USA                 :    9 (  0.6% |   1.0% of known)
+  Korea               :    9 (  0.6% |   1.0% of known)
+  India               :    8 (  0.6% |   0.8% of known)
+  Japan               :    7 (  0.5% |   0.7% of known)
+  Saudi Arabia        :    4 (  0.3% |   0.4% of known)
+  Netherlands         :    4 (  0.3% |   0.4% of known)
+  France              :    3 (  0.2% |   0.3% of known)
+  Spain               :    2 (  0.1% |   0.2% of known)
+  Canada              :    1 (  0.1% |   0.1% of known)
+
+📈 国籍分布（按论文贡献次数）:
+  China               : 1104 ( 62.8%)
+  Unknown             :  555 ( 31.6%)
+  Arab                :   20 (  1.1%)
+  Turkey              :   14 (  0.8%)
+  Germany             :   11 (  0.6%)
+  Korea               :   11 (  0.6%)
+  USA                 :   10 (  0.6%)
+  Japan               :   10 (  0.6%)
+  India               :    8 (  0.5%)
+  Saudi Arabia        :    4 (  0.2%)
+  Netherlands         :    4 (  0.2%)
+  France              :    3 (  0.2%)
+  Spain               :    2 (  0.1%)
+  Canada              :    1 (  0.1%)
+
+🏆 高产作者 (Top 50):
+   1. Shao, Zhenfeng                           - 12 篇 [China]
+   2. Huang, Xiao                              -  9 篇 [China]
+   3. Qin, Rongjun                             -  8 篇 [China]
+   4. Cheng, Qimin                             -  8 篇 [China]
+   5. Zhu, Qing                                -  7 篇 [China]
+   6. Ge, Xuming                               -  7 篇 [Unknown]
+   7. Wu, Bo                                   -  6 篇 [China]
+   8. Ahmad, Muhammad Nasar                    -  6 篇 [Arab]
+   9. Hu, Han                                  -  5 篇 [China]
+  10. Chen, Min                                -  5 篇 [China]
+  11. Zheng, Zezhong                           -  5 篇 [China]
+  12. Wang, Wei                                -  5 篇 [China]
+  13. Liu, Wei                                 -  5 篇 [China]
+  14. Jin, Shuanggen                           -  5 篇 [China]
+  15. Javed, Akib                              -  5 篇 [Unknown]
+  16. Parrish, Christopher E.                  -  5 篇 [Unknown]
+  17. Li, Deren                                -  5 篇 [China]
+  18. Peng, Hao                                -  5 篇 [China]
+  19. Habib, Ayman                             -  4 篇 [Unknown]
+  20. Xu, Bo                                   -  4 篇 [China]
+  21. Thenkabail, Prasad S.                    -  4 篇 [Unknown]
+  22. Aneece, Itiya                            -  4 篇 [Unknown]
+  23. Tong, Xiaohua                            -  4 篇 [Unknown]
+  24. Wang, Mi                                 -  4 篇 [China]
+  25. Di, Kaichang                             -  4 篇 [Unknown]
+  26. Liu, Zhaoqin                             -  4 篇 [China]
+  27. Tang, Shengjun                           -  3 篇 [China]
+  28. Wang, Ruisheng                           -  3 篇 [China]
+  29. Cheng, Liang                             -  3 篇 [China]
+  30. Wang, Lei                                -  3 篇 [China]
+  31. Wang, Qiang                              -  3 篇 [China]
+  32. Teluguntla, Pardhasaradhi                -  3 篇 [Unknown]
+  33. Foley, Daniel                            -  3 篇 [Unknown]
+  34. McCormick, Richard                       -  3 篇 [Unknown]
+  35. Sheng, Qinghong                          -  3 篇 [Unknown]
+  36. Liu, Shijie                              -  3 篇 [China]
+  37. Xie, Huan                                -  3 篇 [China]
+  38. Xu, Zhanghua                             -  3 篇 [China]
+  39. Sun, Lei                                 -  3 篇 [China]
+  40. Li, Haitao                               -  3 篇 [China]
+  41. Yang, Yuanyao                            -  3 篇 [China]
+  42. Zhang, Chaofei                           -  3 篇 [China]
+  43. Li, Jonathan                             -  3 篇 [China]
+  44. Ma, Yi                                   -  3 篇 [China]
+  45. Wang, Yanli                              -  3 篇 [China]
+  46. Dong, Zhipeng                            -  3 篇 [China]
+  47. Niu, Chaoyang                            -  3 篇 [Unknown]
+  48. Chen, Long                               -  3 篇 [China]
+  49. Zhu, Mingcang                            -  3 篇 [China]
+  50. He, Yong                                 -  3 篇 [China]
+
+🌏 各国高产作者:
+
+  China:
+    1. Shao, Zhenfeng                           - 12 篇
+    2. Huang, Xiao                              - 9 篇
+    3. Qin, Rongjun                             - 8 篇
+    4. Cheng, Qimin                             - 8 篇
+    5. Zhu, Qing                                - 7 篇
+
+  USA:
+    1. Williams, Darrel L.                      - 2 篇
+    2. Miller, Steven                           - 1 篇
+    3. Brown, Jesslyn                           - 1 篇
+    4. Marchand, Yanis                          - 1 篇
+    5. Thomas, Orrin                            - 1 篇
+
+  Japan:
+    1. Sakamoto, Toshihiro                      - 3 篇
+    2. Hasan, Amit                              - 2 篇
+    3. Hassan, Faez M.                          - 1 篇
+    4. Ogawa, Daisuke                           - 1 篇
+    5. Hashemi-Beni, Leila                      - 1 篇
+
+  Germany:
+    1. Schleeweis, Karen                        - 1 篇
+    2. Schuegraf, Philipp                       - 1 篇
+    3. Bayram, Bülent                           - 1 篇
+    4. Schultz, Lori                            - 1 篇
+    5. Schilling, Erik                          - 1 篇
+
+  India:
+    1. Sharma, Shilpi                           - 1 篇
+    2. Kumar, Mahesh                            - 1 篇
+    3. Pundir, Sunil Kumar                      - 1 篇
+    4. Singh, Neetu                             - 1 篇
+    5. Gupta, Meeta                             - 1 篇
+
+  Canada:
+    1. Roy, Arijit                              - 1 篇
+
+  France:
+    1. Berveglieri, Adilson                     - 1 篇
+    2. Moradi, Behrooz                          - 1 篇
+    3. Bertin, Stephane                         - 1 篇
+
+================================================================================
+✨ 使用高级启发式算法，基于姓名特征、文化背景和语言模式
+================================================================================
