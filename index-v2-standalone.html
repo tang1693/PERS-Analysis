@@ -970,7 +970,7 @@
             }
         });
     
-        // 合作构成图
+                // 合作构成图 (堆叠柱状图)
         function createCollaborationChart() {
             const container = document.getElementById('collaborationChart');
             if (!container) return;
@@ -978,15 +978,26 @@
             const chart = echarts.init(container);
             charts.collaboration = chart;
             
-            let pureDomestic = 0;
-            let foreignElement = 0;
+            // 按年份聚合数据
+            const yearMap = {};
+            const startYear = 2019;
+            const endYear = 2026;
             
-            const targetPapers = currentYear === 'all' 
-                ? visualizationData.papers 
-                : visualizationData.papers.filter(p => p.year === parseInt(currentYear));
+            for (let y = startYear; y <= endYear; y++) {
+                yearMap[y] = { pure: 0, mixed: 0 };
+            }
+            
+            // 过滤当前年份 (如果是'all'则统计所有年份，如果是特定年份也可以看趋势，但这里用户要求"按照年份来做，一年一根柱子"，所以最好显示所有年份，或者过滤选中年份)
+            // 根据需求，柱状图显示年份趋势比较合理，所以我们直接使用所有年份的数据来生成柱状图，
+            // 除非只选了一年，那就只显示那一年的柱子。
+            // 始终显示所有年份的趋势柱状图
+            const targetPapers = visualizationData.papers;
                 
             targetPapers.forEach(paper => {
                 if (!paper.authors || paper.authors.length === 0) return;
+                const year = paper.year;
+                if (!yearMap[year]) return; // 超出范围的年份
+                
                 let isPure = true;
                 for (let author of paper.authors) {
                     if (author.nationality !== 'China') {
@@ -995,40 +1006,58 @@
                     }
                 }
                 if (isPure) {
-                    pureDomestic++;
+                    yearMap[year].pure++;
                 } else {
-                    foreignElement++;
+                    yearMap[year].mixed++;
                 }
             });
             
+            const years = Object.keys(yearMap).sort();
+            const pureData = years.map(y => yearMap[y].pure);
+            const mixedData = years.map(y => yearMap[y].mixed);
+            
             const option = {
                 tooltip: { 
-                    trigger: 'item', 
-                    formatter: params => {
-                        let desc = params.name === '🇨🇳 纯国内 (100% China)' 
-                            ? '<br/><span style="font-size:12px;color:#999;">仅由中国作者参与的论文</span>'
-                            : '<br/><span style="font-size:12px;color:#999;">包含至少一位非中国作者(或未知国籍)的论文</span>';
-                        return `<b>${params.name}</b>: ${params.value} 篇 (${params.percent}%)${desc}`;
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    formatter: function(params) {
+                        let total = 0;
+                        let res = `<b>${params[0].name}年</b><br/>`;
+                        params.forEach(p => {
+                            res += `${p.marker} ${p.seriesName}: ${p.value} 篇<br/>`;
+                            total += p.value;
+                        });
+                        res += `<i>总量: ${total} 篇</i>`;
+                        return res;
                     }
                 },
                 legend: { top: 'bottom' },
+                grid: { left: '3%', right: '4%', bottom: '15%', containLabel: true },
+                xAxis: {
+                    type: 'category',
+                    data: years,
+                    axisLabel: { interval: 0 }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '论文数量'
+                },
                 color: ['#ee6666', '#5470c6'],
                 series: [
                     {
-                        name: '中外合作构成',
-                        type: 'pie',
-                        radius: ['40%', '70%'],
-                        avoidLabelOverlap: false,
-                        itemStyle: {
-                            borderRadius: 10,
-                            borderColor: '#fff',
-                            borderWidth: 2
-                        },
-                        label: { show: true, formatter: '{b}\n{d}%' },
-                        data: [
-                            { value: pureDomestic, name: '🇨🇳 纯国内 (100% China)' },
-                            { value: foreignElement, name: '🌍 含国外元素' }
-                        ]
+                        name: '🇨🇳 纯国内 (100% China)',
+                        type: 'bar',
+                        stack: 'total',
+                        barWidth: '50%',
+                        label: { show: true, position: 'inside', formatter: p => p.value > 0 ? p.value : '' },
+                        data: pureData
+                    },
+                    {
+                        name: '🌍 含国外元素/其他',
+                        type: 'bar',
+                        stack: 'total',
+                        label: { show: true, position: 'inside', formatter: p => p.value > 0 ? p.value : '' },
+                        data: mixedData
                     }
                 ]
             };
