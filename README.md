@@ -7,7 +7,7 @@
 
 > **Photogrammetric Engineering & Remote Sensing (ASPRS期刊) 作者国籍深度分析与可视化**
 
-[📊 在线查看可视化](https://你的GitHub用户名.github.io/PERS-Analysis/) | [📥 下载数据](https://github.com/你的GitHub用户名/PERS-Analysis/releases) | [📖 使用指南](CSV_FILES_GUIDE.md)
+[📊 在线查看可视化](https://tang1693.github.io/PERS-Analysis/) | [📥 下载数据](https://github.com/tang1693/PERS-Analysis/releases) | [📖 使用指南](CSV_FILES_GUIDE.md)
 
 ---
 
@@ -70,7 +70,7 @@
 1. **直接打开HTML**（推荐）
    ```bash
    # 克隆仓库
-   git clone https://github.com/你的GitHub用户名/PERS-Analysis.git
+   git clone https://github.com/tang1693/PERS-Analysis.git
    cd PERS-Analysis
    
    # 用浏览器打开 index.html
@@ -80,7 +80,7 @@
    ```
 
 2. **在线访问**
-   - GitHub Pages: [https://你的GitHub用户名.github.io/PERS-Analysis/](https://你的GitHub用户名.github.io/PERS-Analysis/)
+   - GitHub Pages: [https://tang1693.github.io/PERS-Analysis/](https://tang1693.github.io/PERS-Analysis/)
 
 ### 使用CSV数据
 
@@ -327,8 +327,8 @@ git push origin feature/your-feature
 
 **项目维护**: 虾总  
 **分析时间**: 2026-03-19  
-**问题反馈**: [GitHub Issues](https://github.com/你的GitHub用户名/PERS-Analysis/issues)  
-**讨论交流**: [GitHub Discussions](https://github.com/你的GitHub用户名/PERS-Analysis/discussions)
+**问题反馈**: [GitHub Issues](https://github.com/tang1693/PERS-Analysis/issues)  
+**讨论交流**: [GitHub Discussions](https://github.com/tang1693/PERS-Analysis/discussions)
 
 ---
 
