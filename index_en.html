@@ -406,6 +406,131 @@
             height: calc(100vh - 100px) !important;
         }
 
+    
+        /* Statistics Section */
+        .statistics-section {
+            margin: 40px 20px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .statistics-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .stat-card h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .stats-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .stats-list li {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .stats-list li:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        
+        .stat-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .stat-count {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .stat-percentage {
+            color: #764ba2;
+            font-weight: 600;
+        }
+        
+        .stat-affiliation {
+            color: #555;
+            font-style: italic;
+        }
+        
+        .stat-country {
+            color: #888;
+        }
+        
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .summary-card .number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .summary-card .label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
     </style>
     <script src="https://registry.npmmirror.com/echarts-wordcloud/2.1.0/files/dist/echarts-wordcloud.min.js"></script>
     <script>
@@ -460,6 +585,131 @@
         
         .chart:fullscreen .chart-container {
             height: calc(100vh - 100px) !important;
+        }
+
+    
+        /* Statistics Section */
+        .statistics-section {
+            margin: 40px 20px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .statistics-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .stat-card h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .stats-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .stats-list li {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .stats-list li:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        
+        .stat-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .stat-count {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .stat-percentage {
+            color: #764ba2;
+            font-weight: 600;
+        }
+        
+        .stat-affiliation {
+            color: #555;
+            font-style: italic;
+        }
+        
+        .stat-country {
+            color: #888;
+        }
+        
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .summary-card .number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .summary-card .label {
+            font-size: 14px;
+            opacity: 0.9;
         }
 
     </style>
@@ -564,6 +814,495 @@
             </div>
         </div>
         
+        
+        <!-- Statistics Section -->
+        <div class="statistics-section">
+            <h2>📊 Detailed Statistics</h2>
+            
+            <div class="summary-stats">
+                <div class="summary-card">
+                    <div class="number">1583</div>
+                    <div class="label">Total Papers</div>
+                </div>
+                <div class="summary-card">
+                    <div class="number">6031</div>
+                    <div class="label">Author Instances</div>
+                </div>
+                <div class="summary-card">
+                    <div class="number">4523</div>
+                    <div class="label">Unique Authors</div>
+                </div>
+                <div class="summary-card">
+                    <div class="number">129</div>
+                    <div class="label">Countries/Regions</div>
+                </div>
+                <div class="summary-card">
+                    <div class="number">3.81</div>
+                    <div class="label">Avg Authors/Paper</div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>🏆 Top 10 Most Prolific Authors</h3>
+                    <ol class="stats-list">
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇺🇸 Gong, Peng</div>
+            <div class="stat-details">
+                <span class="stat-count">21 papers</span>
+                <span class="stat-affiliation">Government of California</span>
+                <span class="stat-country">United States</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇭🇰 Wu, Bo</div>
+            <div class="stat-details">
+                <span class="stat-count">17 papers</span>
+                <span class="stat-affiliation">The Hong Kong Polytechnic University</span>
+                <span class="stat-country">Hong Kong</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇺🇸 Habib, Ayman</div>
+            <div class="stat-details">
+                <span class="stat-count">15 papers</span>
+                <span class="stat-affiliation">Lyles School of Civil and Construction Engineering</span>
+                <span class="stat-country">United States</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇳 Shao, Zhenfeng</div>
+            <div class="stat-details">
+                <span class="stat-count">14 papers</span>
+                <span class="stat-affiliation">Wuhan University</span>
+                <span class="stat-country">China</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇳 Zhu, Qing</div>
+            <div class="stat-details">
+                <span class="stat-count">13 papers</span>
+                <span class="stat-affiliation">Southwest Jiaotong University & Yunnan Engineering Research Center of 3D Real Scene</span>
+                <span class="stat-country">China</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇺🇸 Shan, Jie</div>
+            <div class="stat-details">
+                <span class="stat-count">12 papers</span>
+                <span class="stat-affiliation">Lyles School of Civil and Construction Engineering</span>
+                <span class="stat-country">United States</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇺🇸 Qin, Rongjun</div>
+            <div class="stat-details">
+                <span class="stat-count">11 papers</span>
+                <span class="stat-affiliation">College of Engineering</span>
+                <span class="stat-country">United States</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇳 Li, Deren</div>
+            <div class="stat-details">
+                <span class="stat-count">11 papers</span>
+                <span class="stat-affiliation">Wuhan University</span>
+                <span class="stat-country">China</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇳 Huang, Xin</div>
+            <div class="stat-details">
+                <span class="stat-count">11 papers</span>
+                <span class="stat-affiliation">Wuhan University & Wuhan University</span>
+                <span class="stat-country">China</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇳 Di, Kaichang</div>
+            <div class="stat-details">
+                <span class="stat-count">10 papers</span>
+                <span class="stat-affiliation">Aerospace Information Research Institute</span>
+                <span class="stat-country">China</span>
+            </div>
+        </div>
+    </li>
+</ol>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>🏫 Top 20 Institutions</h3>
+                    <ol class="stats-list">
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Wuhan University</div>
+            <div class="stat-details">
+                <span class="stat-count">381 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Nanjing University</div>
+            <div class="stat-details">
+                <span class="stat-count">84 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">United States Geological Survey</div>
+            <div class="stat-details">
+                <span class="stat-count">82 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">College of Engineering</div>
+            <div class="stat-details">
+                <span class="stat-count">81 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">University of Calgary</div>
+            <div class="stat-details">
+                <span class="stat-count">78 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">The Hong Kong Polytechnic University</div>
+            <div class="stat-details">
+                <span class="stat-count">70 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Chinese Academy of Sciences</div>
+            <div class="stat-details">
+                <span class="stat-count">70 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Nanjing Normal University</div>
+            <div class="stat-details">
+                <span class="stat-count">69 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Tongji University</div>
+            <div class="stat-details">
+                <span class="stat-count">58 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">University of California, Berkeley</div>
+            <div class="stat-details">
+                <span class="stat-count">56 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Aerospace Information Research Institute</div>
+            <div class="stat-details">
+                <span class="stat-count">53 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Gottfried Wilhelm Leibniz Universität Hannover</div>
+            <div class="stat-details">
+                <span class="stat-count">51 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Lyles School of Civil and Construction Engineering</div>
+            <div class="stat-details">
+                <span class="stat-count">48 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Beijing Normal University</div>
+            <div class="stat-details">
+                <span class="stat-count">47 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">University of Electronic Science and Technology of China</div>
+            <div class="stat-details">
+                <span class="stat-count">44 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Deutsches Zentrum für Luft- und Raumfahrt (DLR)</div>
+            <div class="stat-details">
+                <span class="stat-count">43 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Virginia Polytechnic Institute and State University</div>
+            <div class="stat-details">
+                <span class="stat-count">43 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">Southwest Jiaotong University</div>
+            <div class="stat-details">
+                <span class="stat-count">40 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">San Diego State University</div>
+            <div class="stat-details">
+                <span class="stat-count">37 author-papers</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">USDA Forest Service</div>
+            <div class="stat-details">
+                <span class="stat-count">37 author-papers</span>
+            </div>
+        </div>
+    </li>
+</ol>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>🌍 Top 20 Countries</h3>
+                    <ol class="stats-list">
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇺🇸 United States</div>
+            <div class="stat-details">
+                <span class="stat-count">2067 author-papers</span>
+                <span class="stat-percentage">(34.86%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇳 China</div>
+            <div class="stat-details">
+                <span class="stat-count">1792 author-papers</span>
+                <span class="stat-percentage">(30.22%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇨🇦 Canada</div>
+            <div class="stat-details">
+                <span class="stat-count">321 author-papers</span>
+                <span class="stat-percentage">(5.41%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇩🇪 Germany</div>
+            <div class="stat-details">
+                <span class="stat-count">196 author-papers</span>
+                <span class="stat-percentage">(3.31%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇦🇺 Australia</div>
+            <div class="stat-details">
+                <span class="stat-count">128 author-papers</span>
+                <span class="stat-percentage">(2.16%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇮🇳 India</div>
+            <div class="stat-details">
+                <span class="stat-count">103 author-papers</span>
+                <span class="stat-percentage">(1.74%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇪🇸 Spain</div>
+            <div class="stat-details">
+                <span class="stat-count">101 author-papers</span>
+                <span class="stat-percentage">(1.70%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇭🇰 Hong Kong</div>
+            <div class="stat-details">
+                <span class="stat-count">100 author-papers</span>
+                <span class="stat-percentage">(1.69%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇬🇧 United Kingdom</div>
+            <div class="stat-details">
+                <span class="stat-count">96 author-papers</span>
+                <span class="stat-percentage">(1.62%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇳🇱 Netherlands</div>
+            <div class="stat-details">
+                <span class="stat-count">88 author-papers</span>
+                <span class="stat-percentage">(1.48%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇰🇷 South Korea</div>
+            <div class="stat-details">
+                <span class="stat-count">73 author-papers</span>
+                <span class="stat-percentage">(1.23%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇮🇷 Iran</div>
+            <div class="stat-details">
+                <span class="stat-count">72 author-papers</span>
+                <span class="stat-percentage">(1.21%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇹🇼 Taiwan</div>
+            <div class="stat-details">
+                <span class="stat-count">65 author-papers</span>
+                <span class="stat-percentage">(1.10%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇯🇵 Japan</div>
+            <div class="stat-details">
+                <span class="stat-count">64 author-papers</span>
+                <span class="stat-percentage">(1.08%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇫🇮 Finland</div>
+            <div class="stat-details">
+                <span class="stat-count">64 author-papers</span>
+                <span class="stat-percentage">(1.08%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇧🇪 Belgium</div>
+            <div class="stat-details">
+                <span class="stat-count">64 author-papers</span>
+                <span class="stat-percentage">(1.08%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇹🇷 Turkey</div>
+            <div class="stat-details">
+                <span class="stat-count">61 author-papers</span>
+                <span class="stat-percentage">(1.03%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇮🇹 Italy</div>
+            <div class="stat-details">
+                <span class="stat-count">59 author-papers</span>
+                <span class="stat-percentage">(0.99%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇫🇷 France</div>
+            <div class="stat-details">
+                <span class="stat-count">51 author-papers</span>
+                <span class="stat-percentage">(0.86%)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="stat-item">
+            <div class="stat-name">🇧🇷 Brazil</div>
+            <div class="stat-details">
+                <span class="stat-count">33 author-papers</span>
+                <span class="stat-percentage">(0.56%)</span>
+            </div>
+        </div>
+    </li>
+</ol>
+                </div>
+            </div>
+        </div>
+
         <!-- Papers Section -->
         <div class="papers-section">
             <div class="section-title" id="papersTitle">📚 Paper List (All Years 2003-2025)</div>
