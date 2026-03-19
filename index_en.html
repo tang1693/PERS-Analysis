@@ -375,6 +375,37 @@
                 font-size: 0.95em;
             }
         }
+    
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .fullscreen-btn:hover {
+            background: rgba(118, 75, 162, 0.9);
+            transform: scale(1.05);
+        }
+        
+        .chart:fullscreen {
+            padding: 20px;
+            background: white;
+        }
+        
+        .chart:fullscreen .chart-container {
+            height: calc(100vh - 100px) !important;
+        }
+
     </style>
     <script src="https://registry.npmmirror.com/echarts-wordcloud/2.1.0/files/dist/echarts-wordcloud.min.js"></script>
     <script>
@@ -400,7 +431,38 @@
                 50% { transform: scale(1.05); }
                 100% { transform: scale(1); }
             }
-        </style>
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .fullscreen-btn:hover {
+            background: rgba(118, 75, 162, 0.9);
+            transform: scale(1.05);
+        }
+        
+        .chart:fullscreen {
+            padding: 20px;
+            background: white;
+        }
+        
+        .chart:fullscreen .chart-container {
+            height: calc(100vh - 100px) !important;
+        }
+
+    </style>
 
             <div class="badge">📊 Match Rate 97.3%</div>
             <h1>📊 PERS作者国籍分析</h1>
@@ -436,6 +498,7 @@
             <div class="chart">
                 <div class="chart-title">🗺️ Global Author Distribution Map</div>
                 <div class="chart-container" id="mapChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('mapChart')" title="Fullscreen">⛶</button>
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>Loading chart...</div>
@@ -445,6 +508,7 @@
             <div class="chart">
                 <div class="chart-title">📈 Annual Trend Analysis (2003-2025)</div>
                 <div class="chart-container" id="trendChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('trendChart')" title="Fullscreen">⛶</button>
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>Loading chart...</div>
@@ -454,6 +518,7 @@
             <div class="chart">
                 <div class="chart-title">🌍 Country Distribution (Top 15 + Unknown)</div>
                 <div class="chart-container" id="countryChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('countryChart')" title="Fullscreen">⛶</button>
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>Loading chart...</div>
@@ -463,6 +528,7 @@
             <div class="chart">
                 <div class="chart-title">📊 Paper-Author Statistics (2003-2025)</div>
                 <div class="chart-container" id="authorChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('authorChart')" title="Fullscreen">⛶</button>
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>Loading chart...</div>
@@ -472,6 +538,7 @@
             <div class="chart">
                 <div class="chart-title">🔗 International Collaboration (Pure Domestic vs Mixed)</div>
                 <div class="chart-container" id="collaborationChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('collaborationChart')" title="Fullscreen">⛶</button>
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>Loading chart...</div>
@@ -481,6 +548,7 @@
             <div class="chart">
                 <div class="chart-title">☁️ Title Word Cloud</div>
                 <div class="chart-container" id="wordCloudChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('wordCloudChart')" title="Fullscreen">⛶</button>
                     <div class="chart-loading">
                         <div class="spinner"></div>
                         <div>Loading chart...</div>
@@ -1178,6 +1246,43 @@
             chart.setOption(option);
             window.addEventListener('resize', () => chart.resize());
         }
+
+    
+        // Fullscreen functionality
+        function toggleFullscreen(chartId) {
+            const chartDiv = document.getElementById(chartId).closest('.chart');
+            
+            if (!document.fullscreenElement) {
+                chartDiv.requestFullscreen().then(() => {
+                    // Resize chart after entering fullscreen
+                    setTimeout(() => {
+                        const chartName = chartId.replace('Chart', '');
+                        if (charts[chartName]) {
+                            charts[chartName].resize();
+                        }
+                    }, 100);
+                }).catch(err => {
+                    console.error('Error attempting to enable fullscreen:', err);
+                });
+            } else {
+                document.exitFullscreen().then(() => {
+                    // Resize chart after exiting fullscreen
+                    setTimeout(() => {
+                        const chartName = chartId.replace('Chart', '');
+                        if (charts[chartName]) {
+                            charts[chartName].resize();
+                        }
+                    }, 100);
+                });
+            }
+        }
+        
+        // Handle fullscreen change event
+        document.addEventListener('fullscreenchange', () => {
+            Object.values(charts).forEach(chart => {
+                if (chart) chart.resize();
+            });
+        });
 
     </script>
 </body>
