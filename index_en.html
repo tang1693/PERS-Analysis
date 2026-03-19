@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PERS Author Nationality Analysis (Scopus Complete Data 2003-2025)</title>
-    <!-- Using stableCDNsource，并添加动态备用source -->
+    <!-- Using stableCDNsource，with dynamic fallbacksource -->
     <script src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
     <script>
         if (typeof echarts === 'undefined') {
@@ -1531,7 +1531,7 @@ body {
             try { createMapChart(); } catch (e) { console.error('Failed to load map:', e); }
             try { createTrendChart(); } catch (e) { console.error('trend chartFailed to load:', e); }
             try { createCountryChart(); } catch (e) { console.error('Failed to load country chart:', e); }
-            try { createAuthorChart(); } catch (e) { console.error('author图Failed to load:', e); }
+            try { createAuthorChart(); } catch (e) { console.error('authorchartFailed to load:', e); }
             try { createCollaborationChart(); } catch (e) { console.error('Collaboration chartFailed to load:', e); }
             try { createWordCloudChart(); } catch (e) { console.error('Word cloudFailed to load:', e); }
         }
@@ -1817,7 +1817,7 @@ body {
                     textStyle: { color: '#fff' }
                 },
                 legend: {
-                    data: ['论文数', 'Author Count', 'AverageAuthor Count'],
+                    data: ['paper count', 'Author Count', 'AverageAuthor Count'],
                     top: 10
                 },
                 grid: {
@@ -1833,7 +1833,7 @@ body {
                 yAxis: [
                     {
                         type: 'value',
-                        name: '数量'
+                        name: 'count'
                     },
                     {
                         type: 'value',
@@ -1843,7 +1843,7 @@ body {
                 ],
                 series: [
                     {
-                        name: '论文数',
+                        name: 'paper count',
                         type: 'bar',
                         data: papersPerYear,
                         itemStyle: { color: '#5470c6' }
@@ -1873,9 +1873,9 @@ body {
             window.addEventListener('resize', () => chart.resize());
         }
         
-        // Start after page load（dataembedded后会自动执行）
+        // Start after page load（dataembeddedwill auto-execute after）
         window.addEventListener('DOMContentLoaded', () => {
-            // 检查visualizationData是否已定义
+            // checkvisualizationDatais defined
             if (typeof visualizationData === 'undefined' || !visualizationData) {
                 document.getElementById('papersList').innerHTML = 
                     '<p style="color:red; text-align:center;">❌ Failed to load data</p>';
@@ -1892,7 +1892,7 @@ body {
             const chart = echarts.init(container);
             charts.collaboration = chart;
             
-            // 按Year聚合data
+            // ByYearaggregatedata
             const yearMap = {};
             const startYear = 2019;
             const endYear = 2025;
@@ -1901,16 +1901,16 @@ body {
                 yearMap[y] = { pure: 0, mixed: 0 };
             }
             
-            // 过滤当前Year (if'all'then count allYear，if特定Yearcan also see trends，but user requested"按照Year来做，oneYearone bar"，So it's best to show allYear，或者过滤选中Year)
-            // As required，Bar chart displaysYear趋势比较合理，所以我们直接使用所有Year的data来生成柱状图，
-            // 除非只选了oneYear，那就只显示那oneYear的柱子。
-            // 始终显示所有Year的趋势柱状图
+            // filter currentYear (if'all'then count allYear，ifspecificYearcan also see trends，but user requested"ByaccordingYearto do，oneYearone bar"，So it's best to show allYear，or filter selectedYear)
+            // As required，Bar chart displaysYeartrend is more reasonable，so we directly use allYeardatato generate bar chart，
+            // unless only selectedoneYear，then only show thatoneYearbar。
+            // always show allYeartrend barchart
             const targetPapers = visualizationData.papers;
                 
             targetPapers.forEach(paper => {
                 if (!paper.authors || paper.authors.length === 0) return;
                 const year = paper.year;
-                if (!yearMap[year]) return; // 超出范围的Year
+                if (!yearMap[year]) return; // out of rangeYear
                 
                 let isPure = true;
                 for (let author of paper.authors) {
@@ -1997,7 +1997,7 @@ body {
             
             targetPapers.forEach(p => {
                 if (!p.title) return;
-                // 提取长度大于等于3alphabetic words
+                // extract words with length >=3alphabetic words
                 const words = p.title.toLowerCase().replace(/[^a-z]/g, ' ').split(/\s+/).filter(w => w.length >= 3);
                 words.forEach(w => {
                     if (!stopWords.has(w)) {
@@ -2012,7 +2012,7 @@ body {
                 .slice(0, 100);
                 
             const option = {
-                tooltip: { show: true, formatter: '{b}: {c}次' },
+                tooltip: { show: true, formatter: '{b}: {c}times' },
                 series: [{
                     type: 'wordCloud',
                     shape: 'circle',
