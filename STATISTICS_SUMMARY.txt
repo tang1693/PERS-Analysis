@@ -1,0 +1,103 @@
+================================================================================
+PERS JOURNAL PUBLICATION STATISTICS (2003-2025)
+Based on Scopus API Data
+================================================================================
+
+TOP 10 AUTHORS BY PUBLICATION COUNT
+--------------------------------------------------------------------------------
+ 1. Gong, Peng - 21 papers
+    Affiliation: Government of California
+    Country: United States
+
+ 2. Wu, Bo - 17 papers
+    Affiliation: The Hong Kong Polytechnic University
+    Country: Hong Kong
+
+ 3. Habib, Ayman - 15 papers
+    Affiliation: Lyles School of Civil and Construction Engineering
+    Country: United States
+
+ 4. Shao, Zhenfeng - 14 papers
+    Affiliation: Wuhan University
+    Country: China
+
+ 5. Zhu, Qing - 13 papers
+    Affiliation: Southwest Jiaotong University & Yunnan Engineering Research Center of 3D Real Scene
+    Country: China
+
+ 6. Shan, Jie - 12 papers
+    Affiliation: Lyles School of Civil and Construction Engineering
+    Country: United States
+
+ 7. Qin, Rongjun - 11 papers
+    Affiliation: College of Engineering
+    Country: United States
+
+ 8. Li, Deren - 11 papers
+    Affiliation: Wuhan University
+    Country: China
+
+ 9. Huang, Xin - 11 papers
+    Affiliation: Wuhan University & Wuhan University
+    Country: China
+
+10. Di, Kaichang - 10 papers
+    Affiliation: Aerospace Information Research Institute
+    Country: China
+
+
+TOP 20 INSTITUTIONS BY AUTHOR-PAPER COUNT
+--------------------------------------------------------------------------------
+ 1. Wuhan University - 381 author-papers
+ 2. Nanjing University - 84 author-papers
+ 3. United States Geological Survey - 82 author-papers
+ 4. College of Engineering - 81 author-papers
+ 5. University of Calgary - 78 author-papers
+ 6. The Hong Kong Polytechnic University - 70 author-papers
+ 7. Chinese Academy of Sciences - 70 author-papers
+ 8. Nanjing Normal University - 69 author-papers
+ 9. Tongji University - 58 author-papers
+10. University of California, Berkeley - 56 author-papers
+11. Aerospace Information Research Institute - 53 author-papers
+12. Gottfried Wilhelm Leibniz Universität Hannover - 51 author-papers
+13. Lyles School of Civil and Construction Engineering - 48 author-papers
+14. Beijing Normal University - 47 author-papers
+15. University of Electronic Science and Technology of China - 44 author-papers
+16. Deutsches Zentrum für Luft- und Raumfahrt (DLR) - 43 author-papers
+17. Virginia Polytechnic Institute and State University - 43 author-papers
+18. Southwest Jiaotong University - 40 author-papers
+19. San Diego State University - 37 author-papers
+20. USDA Forest Service - 37 author-papers
+
+TOP 20 COUNTRIES BY AUTHOR-PAPER COUNT
+--------------------------------------------------------------------------------
+ 1. United States - 2067 author-papers (34.86%)
+ 2. China - 1792 author-papers (30.22%)
+ 3. Canada - 321 author-papers (5.41%)
+ 4. Germany - 196 author-papers (3.31%)
+ 5. Australia - 128 author-papers (2.16%)
+ 6. India - 103 author-papers (1.74%)
+ 7. Spain - 101 author-papers (1.70%)
+ 8. Hong Kong - 100 author-papers (1.69%)
+ 9. United Kingdom - 96 author-papers (1.62%)
+10. Netherlands - 88 author-papers (1.48%)
+11. South Korea - 73 author-papers (1.23%)
+12. Iran - 72 author-papers (1.21%)
+13. Taiwan - 65 author-papers (1.10%)
+14. Japan - 64 author-papers (1.08%)
+15. Finland - 64 author-papers (1.08%)
+16. Belgium - 64 author-papers (1.08%)
+17. Turkey - 61 author-papers (1.03%)
+18. Italy - 59 author-papers (0.99%)
+19. France - 51 author-papers (0.86%)
+20. Brazil - 33 author-papers (0.56%)
+
+SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+Total Papers: 1583
+Total Author Instances: 6031
+Unique Authors: 4523
+Unique Countries: 129
+Average Authors per Paper: 3.81
+
+================================================================================

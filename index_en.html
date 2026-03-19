@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERS作者国籍分析 (Scopus完整数据 2003-2025)</title>
+    <title>PERS Author Nationality Analysis (Scopus Complete Data 2003-2025)</title>
     <!-- 使用稳定的CDN源，并添加动态备用源 -->
     <script src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
     <script>
@@ -390,8 +390,8 @@
     
     <div class="header">
         <div style="margin-bottom: 15px; display: flex; justify-content: center; gap: 15px;">
-            <a href="index_v1_standalone.html" style="padding: 8px 15px; background: #fff; border-radius: 20px; color: #667eea; text-decoration: none; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">⬅️ 返回旧版 (基于姓名推断, 2019-2026)</a>
-            <a href="index_en.html" style="padding: 8px 15px; background: #fff; border-radius: 20px; color: #667eea; text-decoration: none; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">🌐 English Version</a>
+            <a href="index_v1_standalone.html" style="padding: 8px 15px; background: #fff; border-radius: 20px; color: #667eea; text-decoration: none; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">⬅️ Back to Old Version (Name-based inference, 2019-2026)</a>
+            <a href="index.html" style="padding: 8px 15px; background: #fff; border-radius: 20px; color: #667eea; text-decoration: none; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">🌐 中文版本</a>
         </div>
 
         <style>
@@ -402,7 +402,7 @@
             }
         </style>
 
-            <div class="badge">📊 识别率 97.3%</div>
+            <div class="badge">📊 Match Rate 97.3%</div>
             <h1>📊 PERS作者国籍分析</h1>
             <p>Photogrammetric Engineering & Remote Sensing (2003-2025)</p>
         </div>
@@ -414,7 +414,7 @@
                 <div class="number" id="totalPapers">-</div>
             </div>
             <div class="stat-card">
-                <div class="label">👥 总作者数</div>
+                <div class="label">👥 总Author Count</div>
                 <div class="number" id="totalAuthors">-</div>
             </div>
             <div class="stat-card">
@@ -422,11 +422,11 @@
                 <div class="number" id="uniqueAuthors">-</div>
             </div>
             <div class="stat-card">
-                <div class="label">✅ 识别率</div>
+                <div class="label">✅ Match Rate</div>
                 <div class="number" id="identificationRate">-</div>
             </div>
             <div class="stat-card">
-                <div class="label">🇨🇳 中国作者占比</div>
+                <div class="label">🇨🇳 中国作者Percentage</div>
                 <div class="number" id="chinaPercentage">-</div>
             </div>
         </div>
@@ -434,56 +434,56 @@
         <!-- Charts -->
         <div class="charts">
             <div class="chart">
-                <div class="chart-title">🗺️ 全球作者分布地图</div>
+                <div class="chart-title">🗺️ Global Author Distribution Map</div>
                 <div class="chart-container" id="mapChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
-                        <div>图表加载中...</div>
+                        <div>Loading chart...</div>
                     </div>
                 </div>
             </div>
             <div class="chart">
-                <div class="chart-title">📈 年度趋势分析 (2003-2025)</div>
+                <div class="chart-title">📈 Annual Trend Analysis (2003-2025)</div>
                 <div class="chart-container" id="trendChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
-                        <div>图表加载中...</div>
+                        <div>Loading chart...</div>
                     </div>
                 </div>
             </div>
             <div class="chart">
-                <div class="chart-title">🌍 国家分布 (Top 15 + Unknown)</div>
+                <div class="chart-title">🌍 Country Distribution (Top 15 + Unknown)</div>
                 <div class="chart-container" id="countryChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
-                        <div>图表加载中...</div>
+                        <div>Loading chart...</div>
                     </div>
                 </div>
             </div>
             <div class="chart">
-                <div class="chart-title">📊 论文-作者统计 (2003-2025)</div>
+                <div class="chart-title">📊 Paper-Author Statistics (2003-2025)</div>
                 <div class="chart-container" id="authorChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
-                        <div>图表加载中...</div>
+                        <div>Loading chart...</div>
                     </div>
                 </div>
             </div>
             <div class="chart">
-                <div class="chart-title">🔗 中外合作构成 (纯国内 vs 含国外元素)</div>
+                <div class="chart-title">🔗 International Collaboration (Pure Domestic vs Mixed)</div>
                 <div class="chart-container" id="collaborationChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
-                        <div>图表加载中...</div>
+                        <div>Loading chart...</div>
                     </div>
                 </div>
             </div>
             <div class="chart">
-                <div class="chart-title">☁️ 标题高频词云</div>
+                <div class="chart-title">☁️ Title Word Cloud</div>
                 <div class="chart-container" id="wordCloudChart">
                     <div class="chart-loading">
                         <div class="spinner"></div>
-                        <div>图表加载中...</div>
+                        <div>Loading chart...</div>
                     </div>
                 </div>
             </div>
@@ -498,22 +498,22 @@
         
         <!-- Papers Section -->
         <div class="papers-section">
-            <div class="section-title" id="papersTitle">📚 论文列表 (全部年份 2003-2025)</div>
+            <div class="section-title" id="papersTitle">📚 Paper List (All Years 2003-2025)</div>
             <div id="papersList" class="loading">
                 <div class="spinner"></div>
-                正在加载数据...
+                Loading data...
             </div>
         </div>
         
         <!-- Footer -->
         <div class="footer">
-            <p><strong>数据来源</strong>: ASPRS期刊 | <strong>分析时间</strong>: 2026-03-19</p>
-            <p><strong>时间跨度</strong>: 2003-2025 (23年) | <strong>识别率</strong>: 97.3%</p>
-            <p><strong>分析方法</strong>: Scopus 官方 API (基于机构提取)</p>
+            <p><strong>Data Source</strong>: ASPRS Journal | <strong>Analysis Date</strong>: 2026-03-19</p>
+            <p><strong>Time Span</strong>: 2003-2025 (23 years) | <strong>Match Rate</strong>: 97.3%</p>
+            <p><strong>Method</strong>: Scopus Official API (Based on Affiliation Extraction)</p>
             <p>
-                <a href="https://github.com/tang1693/PERS-Analysis" target="_blank">📦 GitHub仓库</a> | 
-                <a href="https://tang1693.github.io/PERS-Analysis/" target="_blank">🌐 在线版本</a> |
-                <a href="CSV_FILES_GUIDE.md">📖 数据说明</a>
+                <a href="https://github.com/tang1693/PERS-Analysis" target="_blank">📦 GitHub Repository</a> | 
+                <a href="https://tang1693.github.io/PERS-Analysis/" target="_blank">🌐 Online Version</a> |
+                <a href="CSV_FILES_GUIDE.md">📖 Data Documentation</a>
             </p>
         </div>
     </div>
@@ -594,32 +594,32 @@
             document.getElementById('chinaPercentage').textContent = (chinaCount / identified * 100).toFixed(1) + '%';
         }
         
-        // 创建年份按钮
+        // 创建Year按钮
         function createYearButtons() {
             const years = Object.keys(visualizationData.yearlyStats).sort().reverse();
             const selector = document.getElementById('yearSelector');
             
             const allBtn = document.createElement('button');
             allBtn.className = 'year-btn active';
-            allBtn.textContent = '全部年份';
+            allBtn.textContent = 'All Years';
             allBtn.onclick = () => selectYear('all');
             selector.appendChild(allBtn);
             
             years.forEach(year => {
                 const button = document.createElement('button');
                 button.className = 'year-btn';
-                button.textContent = year + '年';
+                button.textContent = year + 'Year';
                 button.onclick = () => selectYear(year);
                 selector.appendChild(button);
             });
         }
         
-        // 选择年份
+        // 选择Year
         function selectYear(year) {
             currentYear = year;
             document.querySelectorAll('.year-btn').forEach(btn => {
-                if ((year === 'all' && btn.textContent === '全部年份') ||
-                    (year !== 'all' && btn.textContent === year + '年')) {
+                if ((year === 'all' && btn.textContent === 'All Years') ||
+                    (year !== 'all' && btn.textContent === year + 'Year')) {
                     btn.classList.add('active');
                 } else {
                     btn.classList.remove('active');
@@ -634,7 +634,7 @@
                 ? visualizationData.papers 
                 : visualizationData.papers.filter(p => p.year == year);
             
-            const title = year === 'all' ? '全部年份 (2003-2025)' : year + '年';
+            const title = year === 'all' ? 'All Years (2003-2025)' : year + 'Year';
             document.getElementById('papersTitle').textContent = `📚 论文列表 (${title}) - 共${papers.length}篇`;
             
             const html = papers.map(paper => `
@@ -643,7 +643,7 @@
                         <a href="${paper.url}" target="_blank">${paper.title}</a>
                     </div>
                     <div class="paper-meta">
-                        <span>📅 ${paper.year}年${paper.month ? ' 第' + paper.month + '期' : ''}</span>
+                        <span>📅 ${paper.year}Year${paper.month ? ' 第' + paper.month + '期' : ''}</span>
                         <span>👥 ${paper.authors.length}位作者</span>
                         <span>${paper.access === 'Open Access content' ? '🆓 开放获取' : '🔒 订阅内容'}</span>
                     </div>
@@ -717,12 +717,12 @@
                     trigger: 'item',
                     formatter: params => {
                         if (isNaN(params.value)) {
-                            return params.name + '<br/>暂无数据';
+                            return params.name + '<br/>No Data';
                         }
                         const pct = params.data && params.data.percentage ? params.data.percentage : 0;
                         return `${flagEmoji[params.name] || ''} ${params.name}<br/>
-                                作者人次: ${params.value}<br/>
-                                占比: ${pct}%`;
+                                Author Instances: ${params.value}<br/>
+                                Percentage: ${pct}%`;
                     }
                 },
                 visualMap: {
@@ -733,7 +733,7 @@
                     inRange: {
                         color: ['#e0f3f8', '#abd9e9', '#74add1', '#4575b4', '#313695']
                     },
-                    text: ['高频', '低频'],
+                    text: ['High', 'Low'],
                     calculable: true,
                     textStyle: { color: '#333' }
                 },
@@ -787,7 +787,7 @@
                     textStyle: { color: '#fff' }
                 },
                 legend: {
-                    data: ['总作者数', '中国作者数', '中国占比(%)'],
+                    data: ['总Author Count', '中国Author Count', '中国Percentage(%)'],
                     top: 10
                 },
                 grid: {
@@ -798,37 +798,37 @@
                 },
                 xAxis: {
                     type: 'category',
-                    data: years.map(y => y + '年'),
+                    data: years.map(y => y + 'Year'),
                     axisLabel: { rotate: 0 }
                 },
                 yAxis: [
                     {
                         type: 'value',
-                        name: '作者数',
+                        name: 'Author Count',
                         position: 'left'
                     },
                     {
                         type: 'value',
-                        name: '占比(%)',
+                        name: 'Percentage(%)',
                         max: 100,
                         position: 'right'
                     }
                 ],
                 series: [
                     {
-                        name: '总作者数',
+                        name: '总Author Count',
                         type: 'bar',
                         data: totalData,
                         itemStyle: { color: '#91cc75' }
                     },
                     {
-                        name: '中国作者数',
+                        name: '中国Author Count',
                         type: 'bar',
                         data: chinaData,
                         itemStyle: { color: '#667eea' }
                     },
                     {
-                        name: '中国占比(%)',
+                        name: '中国Percentage(%)',
                         type: 'line',
                         yAxisIndex: 1,
                         data: chinaPercentage,
@@ -875,7 +875,7 @@
                     formatter: params => {
                         const data = params[0];
                         const percentage = (data.value / totalAuthors * 100).toFixed(1);
-                        return `${data.name}<br/>作者数: ${data.value} (${percentage}%)`;
+                        return `${data.name}<br/>Author Count: ${data.value} (${percentage}%)`;
                     }
                 },
                 grid: {
@@ -948,7 +948,7 @@
                     textStyle: { color: '#fff' }
                 },
                 legend: {
-                    data: ['论文数', '作者数', '平均作者数'],
+                    data: ['论文数', 'Author Count', '平均Author Count'],
                     top: 10
                 },
                 grid: {
@@ -959,7 +959,7 @@
                 },
                 xAxis: {
                     type: 'category',
-                    data: years.map(y => y + '年')
+                    data: years.map(y => y + 'Year')
                 },
                 yAxis: [
                     {
@@ -980,13 +980,13 @@
                         itemStyle: { color: '#5470c6' }
                     },
                     {
-                        name: '作者数',
+                        name: 'Author Count',
                         type: 'bar',
                         data: authorsPerYear,
                         itemStyle: { color: '#91cc75' }
                     },
                     {
-                        name: '平均作者数',
+                        name: '平均Author Count',
                         type: 'line',
                         yAxisIndex: 1,
                         data: avgAuthors,
@@ -1023,7 +1023,7 @@
             const chart = echarts.init(container);
             charts.collaboration = chart;
             
-            // 按年份聚合数据
+            // 按Year聚合数据
             const yearMap = {};
             const startYear = 2019;
             const endYear = 2025;
@@ -1032,16 +1032,16 @@
                 yearMap[y] = { pure: 0, mixed: 0 };
             }
             
-            // 过滤当前年份 (如果是'all'则统计所有年份，如果是特定年份也可以看趋势，但这里用户要求"按照年份来做，一年一根柱子"，所以最好显示所有年份，或者过滤选中年份)
-            // 根据需求，柱状图显示年份趋势比较合理，所以我们直接使用所有年份的数据来生成柱状图，
-            // 除非只选了一年，那就只显示那一年的柱子。
-            // 始终显示所有年份的趋势柱状图
+            // 过滤当前Year (如果是'all'则统计所有Year，如果是特定Year也可以看趋势，但这里用户要求"按照Year来做，一Year一根柱子"，所以最好显示所有Year，或者过滤选中Year)
+            // 根据需求，柱状图显示Year趋势比较合理，所以我们直接使用所有Year的数据来生成柱状图，
+            // 除非只选了一Year，那就只显示那一Year的柱子。
+            // 始终显示所有Year的趋势柱状图
             const targetPapers = visualizationData.papers;
                 
             targetPapers.forEach(paper => {
                 if (!paper.authors || paper.authors.length === 0) return;
                 const year = paper.year;
-                if (!yearMap[year]) return; // 超出范围的年份
+                if (!yearMap[year]) return; // 超出范围的Year
                 
                 let isPure = true;
                 for (let author of paper.authors) {
@@ -1067,7 +1067,7 @@
                     axisPointer: { type: 'shadow' },
                     formatter: function(params) {
                         let total = 0;
-                        let res = `<b>${params[0].name}年</b><br/>`;
+                        let res = `<b>${params[0].name}Year</b><br/>`;
                         params.forEach(p => {
                             res += `${p.marker} ${p.seriesName}: ${p.value} 篇<br/>`;
                             total += p.value;
@@ -1085,12 +1085,12 @@
                 },
                 yAxis: {
                     type: 'value',
-                    name: '论文数量'
+                    name: 'Paper Count'
                 },
                 color: ['#ee6666', '#5470c6'],
                 series: [
                     {
-                        name: '🇨🇳 纯国内 (仅中国大陆机构)',
+                        name: '🇨🇳 Pure Domestic (China Mainland Only)',
                         type: 'bar',
                         stack: 'total',
                         barWidth: '50%',
@@ -1098,7 +1098,7 @@
                         data: pureData
                     },
                     {
-                        name: '🌍 含国外元素/其他',
+                        name: '🌍 International/Other',
                         type: 'bar',
                         stack: 'total',
                         label: { show: true, position: 'inside', formatter: p => p.value > 0 ? p.value : '' },
