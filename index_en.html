@@ -834,6 +834,13 @@ body {
                     </div>
                 </div>
             </div>
+            <!-- Collaboration Percentage Chart -->
+            <div class="chart">
+                <div class="chart-title">📊 International Collaboration Percentage by Year</div>
+                <div class="chart-container" id="collaborationPercentChart">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('collaborationPercentChart')" title="Fullscreen">⛶</button>
+                </div>
+            </div>
             <div class="chart">
                 <div class="chart-title">☁️ Title Word Cloud</div>
                 <div class="chart-container" id="wordCloudChart">
@@ -1981,6 +1988,127 @@ body {
         }
 
         // Word cloud
+
+        // Collaboration Percentage Chart (100% stacked)
+        function createCollaborationPercentChart() {
+            const container = document.getElementById('collaborationPercentChart');
+            if (!container) return;
+            container.innerHTML = '';
+            const chart = echarts.init(container);
+            charts.collaborationPercent = chart;
+            
+            const yearMap = {};
+            const startYear = 2003;
+            const endYear = 2025;
+            
+            for (let y = startYear; y <= endYear; y++) {
+                yearMap[y] = { pure: 0, mixed: 0 };
+            }
+            
+            const targetPapers = visualizationData.papers;
+                
+            targetPapers.forEach(paper => {
+                if (!paper.authors || paper.authors.length === 0) return;
+                const year = paper.year;
+                if (!yearMap[year]) return;
+                
+                let isPure = true;
+                for (let author of paper.authors) {
+                    if (author.nationality !== 'China') {
+                        isPure = false;
+                        break;
+                    }
+                }
+                if (isPure) {
+                    yearMap[year].pure++;
+                } else {
+                    yearMap[year].mixed++;
+                }
+            });
+            
+            const years = Object.keys(yearMap).sort();
+            const purePercentData = years.map(y => {
+                const total = yearMap[y].pure + yearMap[y].mixed;
+                return total > 0 ? ((yearMap[y].pure / total) * 100).toFixed(1) : 0;
+            });
+            const mixedPercentData = years.map(y => {
+                const total = yearMap[y].pure + yearMap[y].mixed;
+                return total > 0 ? ((yearMap[y].mixed / total) * 100).toFixed(1) : 0;
+            });
+            
+            const option = {
+                tooltip: { 
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    formatter: function(params) {
+                        let res = `<b>${params[0].name}</b><br/>`;
+                        params.forEach(p => {
+                            res += `${p.marker} ${p.seriesName}: ${p.value}%<br/>`;
+                        });
+                        const year = params[0].name;
+                        const total = yearMap[year].pure + yearMap[year].mixed;
+                        res += `<i>Total papers: ${total}</i>`;
+                        return res;
+                    }
+                },
+                legend: { 
+                    top: 'bottom',
+                    data: ['🇨🇳 Pure Domestic (China Mainland Only)', '🌍 International/Other']
+                },
+                grid: { left: '3%', right: '4%', bottom: '15%', containLabel: true },
+                xAxis: {
+                    type: 'category',
+                    data: years,
+                    axisLabel: { 
+                        interval: 1,
+                        rotate: 45
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: 'Percentage (%)',
+                    max: 100,
+                    axisLabel: {
+                        formatter: '{value}%'
+                    }
+                },
+                color: ['#000000', '#787774'],
+                series: [
+                    {
+                        name: '🇨🇳 Pure Domestic (China Mainland Only)',
+                        type: 'bar',
+                        stack: 'total',
+                        data: purePercentData,
+                        emphasis: { focus: 'series' },
+                        label: {
+                            show: true,
+                            position: 'inside',
+                            formatter: '{c}%',
+                            color: '#fff',
+                            fontSize: 11
+                        }
+                    },
+                    {
+                        name: '🌍 International/Other',
+                        type: 'bar',
+                        stack: 'total',
+                        data: mixedPercentData,
+                        emphasis: { focus: 'series' },
+                        label: {
+                            show: true,
+                            position: 'inside',
+                            formatter: '{c}%',
+                            color: '#fff',
+                            fontSize: 11
+                        }
+                    }
+                ]
+            };
+            
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        }
+
         function createWordCloudChart() {
             const container = document.getElementById('wordCloudChart');
             if (!container) return;
