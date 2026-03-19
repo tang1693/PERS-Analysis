@@ -594,12 +594,29 @@
         
         // 国旗emoji映射
         const flagEmoji = {
-            'China': '🇨🇳', 'USA': '🇺🇸', 'Japan': '🇯🇵', 'Korea': '🇰🇷',
-            'Germany': '🇩🇪', 'France': '🇫🇷', 'UK': '🇬🇧', 'India': '🇮🇳',
-            'Turkey': '🇹🇷', 'Canada': '🇨🇦', 'Australia': '🇦🇺', 'Brazil': '🇧🇷',
-            'Pakistan': '🇵🇰', 'Egypt': '🇪🇬', 'Saudi Arabia': '🇸🇦', 'Netherlands': '🇳🇱',
-            'Spain': '🇪🇸', 'Sri Lanka': '🇱🇰', 'Kenya': '🇰🇪', 'Tanzania': '🇹🇿',
-            'Ethiopia': '🇪🇹', 'Arab': '🕌', 'Unknown': '❓'
+            'China': '🇨🇳',
+            'United States': '🇺🇸',
+            'USA': '🇺🇸',
+            'Canada': '🇨🇦',
+            'Germany': '🇩🇪',
+            'Australia': '🇦🇺',
+            'United Kingdom': '🇬🇧',
+            'UK': '🇬🇧',
+            'India': '🇮🇳',
+            'Spain': '🇪🇸',
+            'Hong Kong': '🇭🇰',
+            'Netherlands': '🇳🇱',
+            'South Korea': '🇰🇷',
+            'Iran': '🇮🇷',
+            'Taiwan': '🇹🇼',
+            'Japan': '🇯🇵',
+            'Finland': '🇫🇮',
+            'Belgium': '🇧🇪',
+            'Turkey': '🇹🇷',
+            'Italy': '🇮🇹',
+            'France': '🇫🇷',
+            'Brazil': '🇧🇷',
+            'Unknown': '❓'
         };
         
         // 等待ECharts加载完成
@@ -922,7 +939,12 @@
             const chart = echarts.init(container);
             charts.country = chart;
             
-            const allCountries = visualizationData.nationalityCounts || {};
+            // Use countries data from visualization
+            const allCountries = {};
+            Object.entries(visualizationData.countries || {}).forEach(([country, data]) => {
+                allCountries[country] = data.count;
+            });
+            
             const sortedCountries = Object.entries(allCountries)
                 .filter(([country]) => country !== 'Unknown')
                 .sort((a, b) => b[1] - a[1])
@@ -932,7 +954,7 @@
                 sortedCountries.push(['Unknown', allCountries['Unknown']]);
             }
             
-            const totalAuthors = Object.keys(visualizationData.authorNationality).length;
+            const totalAuthors = Object.values(allCountries).reduce((sum, count) => sum + count, 0);
             
             const option = {
                 tooltip: {
