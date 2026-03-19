@@ -856,7 +856,7 @@
             const chart = echarts.init(container);
             charts.trend = chart;
             
-            const years = Object.keys(visualizationData.yearlyStats).sort();
+            const years = Object.keys(visualizationData.yearlyStats).filter(y => parseInt(y) <= 2025).sort();
             const chinaData = years.map(year => visualizationData.yearlyStats[year]['China'] || 0);
             const totalData = years.map(year => {
                 return Object.values(visualizationData.yearlyStats[year]).reduce((a, b) => a + b, 0);
@@ -1020,7 +1020,7 @@
             const chart = echarts.init(container);
             charts.author = chart;
             
-            const years = Object.keys(visualizationData.yearlyStats).sort();
+            const years = Object.keys(visualizationData.yearlyStats).filter(y => parseInt(y) <= 2025).sort();
             const papersPerYear = years.map(year => 
                 visualizationData.papers.filter(p => p.year == year).length
             );
