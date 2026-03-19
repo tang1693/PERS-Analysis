@@ -1532,7 +1532,8 @@ body {
             try { createTrendChart(); } catch (e) { console.error('trend chartFailed to load:', e); }
             try { createCountryChart(); } catch (e) { console.error('Failed to load country chart:', e); }
             try { createAuthorChart(); } catch (e) { console.error('authorchartFailed to load:', e); }
-            try { createCollaborationChart(); } catch (e) { console.error('Collaboration chartFailed to load:', e); }
+            try { createCollaborationChart();
+            createCollaborationPercentChart(); } catch (e) { console.error('Collaboration chartFailed to load:', e); }
             try { createWordCloudChart(); } catch (e) { console.error('Word cloudFailed to load:', e); }
         }
         
